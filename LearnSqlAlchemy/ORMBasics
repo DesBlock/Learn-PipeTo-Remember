@@ -1,5 +1,66 @@
-- Must Declare engine
+Must Declare engine
+    reguires: 
+        from sqlalchemy import create_engine
+        >>> engine = create_engine('sqlite:///:memory:', echo=True)
+        # echo = True relates to logging output 
+        
+    Engine is the core interface to the database
+    Not called until Engine.execute() or .connect() is called
+    
 
-```python
-engine = create_engine('mysql://<database>', echo=True) #Echo = true relates to logging output
-```
+Declare a Mapping:
+    Used to create a base to declare tables with options used to describe database (ie. colum,integer, string, etc.)
+    Example Code:
+        >>> from sqlalchemy import Column, Integer, String
+        #Create a table called users with columns id,name,fullname,password
+        >>> class User(Base):
+        ...     __tablename__ = 'users'
+        ...
+        ...     id = Column(Integer, primary_key=True)
+        ...     name = Column(String(50))
+        ...     fullname = Column(String(50))
+        ...     password = Column(String(50))
+        #Allows User class to be easily called
+        ...     def __repr__(self):
+        ...        return "<User(name='%s', fullname='%s', password='%s')>" % (
+        ...                             self.name, self.fullname, self.password)
+    !Must declare at least __tablename and one column which is part of a primary key!
+    
+    Now we have a Table object created above we have table metadata on the object created by declarative
+    Example:
+        >>> User.__table__ 
+        Table('users', MetaData(bind=None),
+            Column('id', Integer(), table=<users>, primary_key=True, nullable=False),
+            Column('name', String(), table=<users>),
+            Column('fullname', String(), table=<users>),
+            Column('password', String(), table=<users>), schema=None)
+            
+Create a Session:
+    Now to speak with the db, the ORM uses sessions and the sessionmaker class
+    Example Code:
+        from sqlalchemy.orm import sessionmaker
+        #Binds to the engine instance created earlier
+        >>> Session = sessionmaker(bind=engine)
+        
+    Look at SQLAlchemy docs for more information on configuring docs (Located in resources)
+    
+Add and Update Objects:
+    Used to add objects to a session
+    #Instansiate User class with arugements
+    user = User(name='ed', fullname='Ed Jones', password='edspassword')
+    #Add to session (Still not written to database)
+    session.add(user)
+    #Possible to add multiple users with .add_all function
+    #Adds all new additions to db, called flushing
+    session.commit()
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+    
