@@ -1,0 +1,17 @@
+Download sshfs from Fuse for OS X
+    http://osxfuse.github.io/
+Create directory to be mounted
+    sudo mkdir /mnt/[NameOfFilesystem2BeMounted]
+Mount
+    sudo sshfs -o allow_other,defer_permissions [user]@xxx.xxx.xxx.xxx:/[MountPointOnRemote] /mnt/[LocalMountPoint]
+    # -o allow_other will allow access to other users
+    # defer_permissions is currently unknown
+Permantely Mount
+    sudo vifs
+    add line:
+        sshfs#[user]@xxx.xxx.xxx.xxx:/[MountPointOnRemote] /mnt/[LocalMountPoint]
+        
+References:
+    https://www.digitalocean.com/community/tutorials/how-to-use-sshfs-to-mount-remote-file-systems-over-ssh
+    
+    
