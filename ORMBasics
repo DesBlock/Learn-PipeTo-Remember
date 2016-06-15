@@ -1,0 +1,5 @@
+- Must Declare engine
+
+```python
+engine = create_engine('mysql://<database>', echo=True) #Echo = true relates to logging output
+```
