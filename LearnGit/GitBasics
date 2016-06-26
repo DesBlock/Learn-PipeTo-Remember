@@ -1,1 +1,32 @@
-test
+Overview:
+---------
+  To learn what git is and the long version of these instructions look here: https://git-scm.com/doc
+  This will be a reference guide how to install and configure git as well as basic commands for common scenarios
+
+Assumptions:
+------------
+  A) You are using a linux based operating system
+  B) You have already installed Git
+
+Procedure:
+----------
+  A) Configurion
+    Makes use of the 
+    
+  B) Cloning
+  
+  C) Pull
+  
+  D) Status
+  
+  E) Add
+  
+  F) Commit
+  
+  G) Push
+  
+  H)Revert
+  
+  I) Branch
+  
+  J) Checkout
